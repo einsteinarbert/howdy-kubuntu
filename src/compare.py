@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.11
+
 # Compare incomming video with known faces
 # Running in a local python instance to get around PATH issues
 
@@ -244,7 +246,7 @@ while True:
 			lowest_certainty = match
 
 		# Check if a match that's confident enough
-		if 0 < match < video_certainty:
+		if video_certainty <= match:
 			timings["tt"] = time.time() - timings["st"]
 			timings["fl"] = time.time() - timings["fr"]
 

@@ -7,7 +7,7 @@ import glob
 import syslog
 
 # pam-python is running python 2, so we use the old module here
-import ConfigParser
+import configparser as ConfigParser
 
 # Read config from disk
 config = ConfigParser.ConfigParser()
@@ -41,7 +41,7 @@ def doAuth(pamh):
 	syslog.syslog(syslog.LOG_INFO, "Attempting facial authentication for user " + pamh.get_user())
 
 	# Run compare as python3 subprocess to circumvent python version and import issues
-	status = subprocess.call(["/usr/bin/python3", os.path.dirname(os.path.abspath(__file__)) + "/compare.py", pamh.get_user()])
+	status = subprocess.call(["/usr/bin/python3.11", os.path.dirname(os.path.abspath(__file__)) + "/compare.py", pamh.get_user()])
 
 	# Status 10 means we couldn't find any face models
 	if status == 10:
