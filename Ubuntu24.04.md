@@ -66,7 +66,8 @@ auth sufficient pam_python.so /lib/security/howdy/pam.py
 ```bash
 cat /etc/pam.d/common-auth
 ## for howdy face detection
-auth       [success=1 default=ignore] pam_python.so /lib/security/howdy/pam.py
+auth    [success=2 default=ignore]      pam_python.so /lib/security/howdy/pam.py
+auth    [success=1 default=ignore]      pam_unix.so nullok
 ```
 
 ## Testing
